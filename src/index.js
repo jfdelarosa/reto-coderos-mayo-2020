@@ -1,8 +1,30 @@
 import { html, define } from "./helpers.js";
-import "./MyInput.js";
+import "./components/MyInput.js";
+import "./components/MyButton.js";
 
-export function onSubmit(host, event) {
-  console.log({ host, event });
+export async function onSubmit(host, event) {
+  try {
+    if (!host.isValid || host.value === "") return;
+    host.loading = true;
+    const body = {
+      email: "eve.holt@reqres.in",
+      password: "pistol",
+    };
+
+    const response = await fetch("https://reqres.in/api/register", {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    host.loading = false;
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function onChange(host, { detail }) {
@@ -13,13 +35,21 @@ export function onChange(host, { detail }) {
 const errorMessage = () => html`<span>Error</span>`;
 
 export const MyApp = {
+  loading: false,
   isValid: true,
-  render: ({ isValid }) => html`
+  value: "",
+  render: ({ loading, isValid, value }) => html`
     <div class="container">
-      <form onsubmit="${onSubmit}">
-        ${isValid ? "" : errorMessage()}
-        <my-input onchange=${onChange} />
-      </form>
+      ${isValid ? "" : errorMessage()}
+      <my-input
+        disabled="${loading}"
+        onmy-input=${onChange}
+        onmy-submit="${onSubmit}"
+      ></my-input>
+      <my-button
+        disabled="${loading || !isValid || value === ""}"
+        onmy-click="${onSubmit}"
+      ></my-button>
     </div>
   `,
 };

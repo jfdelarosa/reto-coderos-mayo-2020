@@ -5,9 +5,9 @@ export function onSubmit(host, event) {
   console.log({ host, event });
 }
 
-export function onChange(host, event) {
-  host.isValid = event.detail.isValid;
-  host.value = event.detail.value;
+export function onChange(host, { detail }) {
+  host.isValid = detail.isValid;
+  host.value = detail.value;
 }
 
 const errorMessage = () => html`<span>Error</span>`;
@@ -18,7 +18,7 @@ export const MyApp = {
     <div class="container">
       <form onsubmit="${onSubmit}">
         ${isValid ? "" : errorMessage()}
-        <my-input ontest=${onChange} />
+        <my-input onchange=${onChange} />
       </form>
     </div>
   `,

@@ -15,6 +15,24 @@ const containerStyles = `
   justify-content: space-around;
 }
 
+.submitted{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitted .container{
+  flex-direction: column;
+}
+
+.submitted h1{
+  color: hsl(144, 36%, 57%);
+}
+
+.submitted h2{
+  margin: 0;
+}
+
 h1 {
   color: #2e81f5;
   font-size: 3rem;

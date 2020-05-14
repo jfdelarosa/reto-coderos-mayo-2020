@@ -22,8 +22,9 @@ export async function onSubmit(host, event) {
     });
 
     const data = await response.json();
+
+    host.submitted = !!data.token;
     host.loading = false;
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -38,39 +39,53 @@ export const MyApp = {
   loading: false,
   isValid: true,
   value: "",
-  render: ({ loading, isValid, value }) => html`
-    <style>
-      ${containerStyles}
-    </style>
-    <div class="container">
-      <div class="form-container">
-        <h1>¡Suscríbete!</h1>
-        <h2>
-          Recibe todas las novedades de nuestro sitio web en tu bandeja de
-          entrada.
-        </h2>
-        <div class="form">
-          <my-input
-            disabled="${loading}"
-            onmy-input=${onChange}
-            onmy-submit="${onSubmit}"
-          ></my-input>
-          <my-button
-            valid="${value !== "" ? (isValid ? "valid" : "invalid") : ""}"
-            disabled="${loading || !isValid || value === ""}"
-            loading="${loading}"
-            onmy-click="${onSubmit}"
-          ></my-button>
+  submitted: false,
+  render: ({ loading, isValid, value, submitted }) => {
+    let content;
+    if (submitted) {
+      content = html` <h1>¡Gracias!</h1>
+        <h2>Revisa tu bandeja de entrada para continuar...</h2>`;
+    } else {
+      content = html`
+        <div class="form-container">
+          <h1>¡Suscríbete!</h1>
+          <h2>
+            Recibe todas las novedades de nuestro sitio web en tu bandeja de
+            entrada.
+          </h2>
+          <div class="form">
+            <my-input
+              disabled="${loading}"
+              onmy-input=${onChange}
+              onmy-submit="${onSubmit}"
+            ></my-input>
+            <my-button
+              valid="${value !== "" ? (isValid ? "valid" : "invalid") : ""}"
+              disabled="${loading || !isValid || value === ""}"
+              loading="${loading}"
+              onmy-click="${onSubmit}"
+            ></my-button>
+          </div>
+          <div class="error ${isValid ? "hidden" : ""}">
+            El correo no es valido
+          </div>
         </div>
-        <div class="error ${isValid ? "hidden" : ""}">
-          El correo no es valido
+        <div class="figure">
+          <my-figure></my-figure>
+        </div>
+      `;
+    }
+    return html`
+      <style>
+        ${containerStyles}
+      </style>
+      <div class="${submitted ? "submitted" : "not-submitted"}">
+        <div class="container">
+          ${content}
         </div>
       </div>
-      <div class="figure">
-        <my-figure></my-figure>
-      </div>
-    </div>
-  `,
+    `;
+  },
 };
 
 define("my-app", MyApp);

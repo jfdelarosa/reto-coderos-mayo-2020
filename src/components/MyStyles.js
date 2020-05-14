@@ -15,26 +15,33 @@ const containerStyles = `
   justify-content: space-around;
 }
 
-.form-container > * {
-  margin: 2rem 0;
-}
-
 h1 {
   color: #2e81f5;
   font-size: 3rem;
-  font-weight: 700;
-  margin: 0;
+  font-weight: 800;
+  margin: 0 0 2rem 0;
 }
 h2 {
   color: #7989a0;
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.5;
+  margin: 0 0 1.5rem 0;
 }
 
 .form {
   display: flex;
 }
+
+.error{
+  color: hsl(0, 58%, 63%);
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+}
+.error.hidden{
+  visibility: hidden;
+}
+
 my-input{
   flex: 1;
 }

@@ -34,8 +34,6 @@ export function onChange(host, { detail }) {
   host.value = detail.value;
 }
 
-const errorMessage = () => html`<span>Error</span>`;
-
 export const MyApp = {
   loading: false,
   isValid: true,
@@ -48,12 +46,9 @@ export const MyApp = {
       <div class="form-container">
         <h1>¡Suscríbete!</h1>
         <h2>
-          Obten todas las novedades de nuestro sitio web en tu bandeja de
+          Recibe todas las novedades de nuestro sitio web en tu bandeja de
           entrada.
         </h2>
-        <div>
-          ${isValid ? "" : errorMessage()}
-        </div>
         <div class="form">
           <my-input
             disabled="${loading}"
@@ -65,6 +60,9 @@ export const MyApp = {
             disabled="${loading || !isValid || value === ""}"
             onmy-click="${onSubmit}"
           ></my-button>
+        </div>
+        <div class="error ${isValid ? "hidden" : ""}">
+          El correo no es valido
         </div>
       </div>
       <div class="figure">

@@ -14,12 +14,11 @@ const containerStyles = `
   padding: 4rem 5rem;
   justify-content: space-around;
 }
+
 .form-container > * {
   margin: 2rem 0;
 }
-.form {
-  display: flex;
-}
+
 h1 {
   color: #2e81f5;
   font-size: 3rem;
@@ -31,6 +30,13 @@ h2 {
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+
+.form {
+  display: flex;
+}
+my-input{
+  flex: 1;
 }
 
 .form-container,
@@ -52,15 +58,21 @@ h2 {
 
 const inputStyles = `
 .input{
+  box-sizing: border-box;
+  width: 100%;
   display: block;
   padding: 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
-  border: 2px solid #bfc6cf;
+  border: 2px solid hsl(214, 14%, 78%);
   border-right: none;
   outline: none;
-  color: #7e8ea5;
+  color: hsl(215, 18%, 57%);
   font-size: 1rem;
   background: white;
+}
+
+.input::placeholder{
+  color: hsl(215, 18%, 75%);
 }
 
 .input:hover{
@@ -68,10 +80,14 @@ const inputStyles = `
   border-color: #a5aebb;
 }
 
+.input:hover::placeholder{
+  color: hsl(215, 18%, 70%);
+}
+
 .input:focus{
-  border-color: #7e8ea5;
+  border-color: hsl(215, 18%, 57%);
   background: #fbfcfe;
-  color: #7e8ea5;
+  color: hsl(215, 18%, 57%);
 }
 
 .input.valid{
@@ -98,4 +114,58 @@ const inputStyles = `
   background: hsl(0, 60%, 99%);
 }`;
 
-export { containerStyles, inputStyles };
+const buttonStyles = `
+.button{
+  font-family: "Font Awesome 5 Free";
+  box-sizing: border-box;
+  display: block;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 3px solid hsl(214, 14%, 78%);
+  outline: none;
+  color: hsl(215, 18%, 57%);
+  font-size: 1rem;
+  background: hsl(214, 14%, 78%);
+  cursor: not-allowed;
+}
+
+.button:hover{
+  background: hsl(214, 14%, 80%);
+  border-color: hsl(214, 14%, 80%);
+  color: hsl(215, 18%, 59%);
+}
+
+.button.invalid{
+  background: hsl(0, 58%, 63%);
+  border-color: hsl(0, 58%, 63%);
+  color: hsl(0, 58%, 35%);
+  cursor: not-allowed;
+}
+
+.button.invalid:hover{
+  background: hsl(0, 58%, 65%);
+  border-color: hsl(0, 58%, 65%);
+  color: hsl(0, 58%, 37%);
+}
+
+.button.valid{
+  background:hsl(144, 36%, 57%);
+  border-color: hsl(144, 36%, 57%);
+  color: hsl(144, 36%, 98%);
+  cursor: pointer;
+}
+
+.button.valid:hover{
+  background:hsl(144, 36%, 59%);
+  border-color: hsl(144, 36%, 59%);
+  color: hsl(144, 36%, 96%);
+}
+
+.button.valid:focus{
+  background:hsl(144, 36%, 52%);
+  border-color: hsl(144, 36%, 52%);
+  color: hsl(144, 36%, 100%);
+}
+`;
+
+export { containerStyles, inputStyles, buttonStyles };

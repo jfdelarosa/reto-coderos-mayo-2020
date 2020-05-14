@@ -1,4 +1,5 @@
 import { html, define, dispatch } from "../helpers.js";
+import { buttonStyles } from "./MyStyles.js";
 
 export function onClick(host, event) {
   event.preventDefault();
@@ -7,13 +8,19 @@ export function onClick(host, event) {
 
 export const MyButton = {
   disabled: false,
-  render: ({ disabled }) =>
-    html`<input
-      type="submit"
-      onclick="${onClick}"
-      value="Enviar"
-      disabled="${disabled}"
-    />`,
+  valid: "",
+  render: ({ disabled, valid }) =>
+    html`<style>
+        ${buttonStyles}
+      </style>
+      <button
+        class="button ${valid}"
+        onclick="${onClick}"
+        value="Enviar"
+        disabled="${disabled}"
+      >
+        
+      </button>`,
 };
 
 define("my-button", MyButton);

@@ -51,14 +51,17 @@ export const MyApp = {
           Obten todas las novedades de nuestro sitio web en tu bandeja de
           entrada.
         </h2>
-        <div class="form">
+        <div>
           ${isValid ? "" : errorMessage()}
+        </div>
+        <div class="form">
           <my-input
             disabled="${loading}"
             onmy-input=${onChange}
             onmy-submit="${onSubmit}"
           ></my-input>
           <my-button
+            valid="${value !== "" ? (isValid ? "valid" : "invalid") : ""}"
             disabled="${loading || !isValid || value === ""}"
             onmy-click="${onSubmit}"
           ></my-button>

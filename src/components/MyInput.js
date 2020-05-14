@@ -30,6 +30,7 @@ export const MyInput = {
         disabled="${disabled}"
         oninput="${onInput}"
         onkeypress="${onkeypress}"
+        placeholder="email@dominio.com"
       />`,
 };
 

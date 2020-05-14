@@ -58,6 +58,7 @@ export const MyApp = {
           <my-button
             valid="${value !== "" ? (isValid ? "valid" : "invalid") : ""}"
             disabled="${loading || !isValid || value === ""}"
+            loading="${loading}"
             onmy-click="${onSubmit}"
           ></my-button>
         </div>

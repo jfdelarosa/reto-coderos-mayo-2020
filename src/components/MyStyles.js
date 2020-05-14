@@ -173,6 +173,21 @@ const buttonStyles = `
   border-color: hsl(144, 36%, 52%);
   color: hsl(144, 36%, 100%);
 }
+
+.button.loading span{
+  display: inline-block;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 `;
 
 export { containerStyles, inputStyles, buttonStyles };

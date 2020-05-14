@@ -3,10 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: #3f84e5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Open Sans", sans-serif;
+      }
+      .app {
+        width: 90%;
+      }
+      @media (min-width: 768px) {
+        .app {
+          width: 75%;
+        }
+      }
+      @media (min-width: 992px) {
+        .app {
+          width: 65%;
+        }
+      }
+    </style>
+    <title>Reto Coderos Mayo 2020</title>
   </head>
   <body>
-    <my-app />
+    <my-app class="app" />
     <script type="module">
       import { MyApp } from "./src/index.js";
     </script>

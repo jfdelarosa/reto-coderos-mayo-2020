@@ -17,7 +17,8 @@ const containerStyles = `
 .form-container > * {
   margin: 2rem 0;
 }
-form {
+.form {
+  display: flex;
 }
 h1 {
   color: #2e81f5;
@@ -51,6 +52,7 @@ h2 {
 
 const inputStyles = `
 .input{
+  display: block;
   padding: 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
   border: 2px solid #bfc6cf;

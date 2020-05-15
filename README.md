@@ -2,6 +2,8 @@
 
 El reto Coderos de Mayo consiste en realizar un formulario de suscripción a un Newsletter ficticio utilizando el framework [HybridJS](https://hybrids.js.org/).
 
+![Demo](/capture.gif "Demo")
+
 Cabe mencionar que a propósito se utilizaron malas prácticas (al menos para mi) para construír esta demo:
 
 - No se usan bundlers
